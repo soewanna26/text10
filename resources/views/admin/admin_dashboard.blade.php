@@ -112,6 +112,9 @@
     <!-- Custom js for this page -->
     <script src="{{ asset('backend/assets/js/code.js') }}"></script>
     <!-- End custom js for this page -->
+    <!-- Custom js for this page -->
+    <script src="{{ asset('backend/assets/js/validate.min.js') }}"></script>
+    <!-- End custom js for this page -->
 
     <!-- Plugin js for this page -->
     <script src="{{ asset('backend/assets/vendors/datatables.net/jquery.dataTables.js') }}"></script>

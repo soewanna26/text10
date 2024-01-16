@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Exports\PermissionExport;
 use App\Http\Controllers\Controller;
+use App\Imports\PermissionImport;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RoleController extends Controller
 {
@@ -63,9 +66,28 @@ class RoleController extends Controller
     public function DeletePermission($id)
     {
         Permission::findOrFail($id)->delete();
+
         $notification = array(
-          'message' => 'Permission Delete successfully',
-            'alert-type' =>'success'
+            'message' => 'Permission Delete successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
+    public function ImportPermission()
+    {
+        return view('backend.pages.permission.import_permission');
+    }
+    public function Export()
+    {
+        return Excel::download(new PermissionExport, 'permission.xlsx');
+    }
+    public function Import(Request $request)
+    {
+        Excel::import(new PermissionImport, $request->file('import_file'));
+
+        $notification = array(
+            'message' => 'Import Update successfully',
+            'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
     }

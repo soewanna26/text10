@@ -3,33 +3,27 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <div class="page-content">
+        <nav class="page-breadcrumb">
+            <ol class="breadcrumb">
+                <a href="{{ route('export') }}" class="btn btn-inverse-danger">Download Xlsx</a>
+            </ol>
+        </nav>
         <div class="row profile-body">
             <div class="col-md-8 col-xl-8 middle-wapper">
                 <div class="row">
                     <div class="card">
                         <div class="card-body">
                             <h6 class="card-title">
-                                Add Permission
+                                Import Permission
                             </h6>
-                            <form action="{{ route('store.permission') }}" method="POST" class="forms-sample" id="myForm">
+                            <form action="{{ route('import') }}" method="POST" class="forms-sample" enctype="multipart/form-data"
+                                id="myForm">
                                 @csrf
                                 <div class="form-group mb-3">
-                                    <label for="name" class="form-label">Pemission Name</label>
-                                    <input type="text" name="name" id="name" class="form-control">
+                                    <label for="import_file" class="form-label">Xlsx File Import</label>
+                                    <input type="file" name="import_file" id="import_file" class="form-control">
                                 </div>
-                                <div class="form-group mb-3">
-                                    <label for="group_name" class="form-label">Group Name</label>
-                                    <select name="group_name" id="group_name" class="form-control">
-                                        <option selected="" disabled>Select Group</option>
-                                        <option value="type">Property Type</option>
-                                        <option value="state">Property State</option>
-                                        <option value="email">Email</option>
-                                        <option value="ui">UI Kit</option>
-                                        <option value="advanced">Advanced UI</option>
-                                        <option value="role">Role & Permission</option>
-                                    </select>
-                                </div>
-                                <button type="submit" class="btn btn-primary me-2">Save Changes</button>
+                                <button type="submit" class="btn btn-inverse-warning me-2">Upload</button>
                             </form>
                         </div>
                     </div>
@@ -44,7 +38,7 @@
                     name: {
                         required: true,
                     },
-                    group_name:{
+                    group_name: {
                         required: true,
                     }
 
@@ -53,7 +47,7 @@
                     name: {
                         required: 'Please Enter Name',
                     },
-                    group_name:{
+                    group_name: {
                         required: 'Please Selected GroupName',
                     }
 
