@@ -48,7 +48,7 @@
                                         </div>
                                     </div>
                                 @endforeach
-                                <button type="submit" class="btn btn-primary me-2">Add Changes</button>
+                                <button type="submit" class="btn btn-primary me-2">Update Changes</button>
                             </form>
                         </div>
                     </div>
