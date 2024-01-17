@@ -18,7 +18,7 @@
 
                                     <div class="mb-3">
                                         <label for="type_name" class="form-label">Type Name</label>
-                                        <input type="type" name="type_name"
+                                        <input type="text" name="type_name"
                                             class="form-control
                                         @error('type_name')
                                             is-invalid
@@ -29,7 +29,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="type_icon" class="form-label">Type Icon</label>
-                                        <input type="type" name="type_icon"
+                                        <input type="text" name="type_icon"
                                             class="form-control
                                         @error('type_icon')
                                             is-invalid

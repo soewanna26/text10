@@ -19,6 +19,7 @@
                 </a>
             </li>
             <li class="nav-item nav-category">web apps</li>
+            @if (Auth::user()->can('type.menu'))
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false"
                     aria-controls="emails">
@@ -28,16 +29,22 @@
                 </a>
                 <div class="collapse" id="emails">
                     <ul class="nav sub-menu">
-                        <li class="nav-item">
-                            <a href="{{route('all.type')}}" class="nav-link">All Type</a>
-                        </li>
-                        {{-- <li class="nav-item">
-                            <a href="pages/email/read.html" class="nav-link">Add Type</a>
-                        </li> --}}
+                    @if (Auth::user()->can('all.type'))
+                    <li class="nav-item">
+                        <a href="{{route('all.type')}}" class="nav-link">All Type</a>
+                    </li>
+                    @endif
+                    @if (Auth::user()->can('add.type'))
+                    <li class="nav-item">
+                        <a href="{{route('add.type')}}" class="nav-link">Add Type</a>
+                    </li>
+                    @endif
 
                     </ul>
                 </div>
             </li>
+            @endif
+
             <li class="nav-item">
                 <a href="pages/apps/calendar.html" class="nav-link">
                     <i class="link-icon" data-feather="calendar"></i>
@@ -168,6 +175,27 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{route('add.roles.permission')}}" class="nav-link">Add Roles Permission</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('all.roles.permission')}}" class="nav-link">All Roles Permission</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#admin" role="button"
+                    aria-expanded="false" aria-controls="admin">
+                    <i class="link-icon" data-feather="anchor"></i>
+                    <span class="link-title">Manage Admin User</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="admin">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{route('all.admin')}}" class="nav-link">All Admin</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('add.admin')}}" class="nav-link">Add Admin</a>
                         </li>
                     </ul>
                 </div>
